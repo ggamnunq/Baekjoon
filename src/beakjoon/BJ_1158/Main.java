@@ -33,6 +33,7 @@ public class Main {
         }
 
         sb.replace(sb.length() - 2, sb.length() - 1, ">");
+
         System.out.println(sb.toString());
 
 
