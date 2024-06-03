@@ -39,8 +39,6 @@ public class Main {
                 return;
             }
         }
-
         System.out.print(sb.toString());
-
     }
 }
