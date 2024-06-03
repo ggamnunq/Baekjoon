@@ -6,48 +6,57 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-class Main {
-    static StringTokenizer st;
+public class Main {
+
     public static void main(String[] args) throws IOException {
-        // TODO Auto-generated method stub
-        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-        st = new StringTokenizer( br.readLine() );
 
-        int L = Integer.parseInt(st.nextToken());    // Lucky Set에 포함된 숫자의 개수
-        int[] arr = new int[L];				      // Lucky Set에 포함된 숫자만큼 배열 할당
-        st = new StringTokenizer( br.readLine() );
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+        st = new StringTokenizer(br.readLine());
+
+        int L = Integer.parseInt(st.nextToken());
+        int[] arr = new int[L];
+
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < L; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+
+        st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        Arrays.sort(arr);
+
+        int a = arr[0];
+        int b = arr[L-1];
+
         for(int i = 0 ; i < L ; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());  // Lucky Set 데이터 입력
-        }
-        st = new StringTokenizer( br.readLine() );
-        int N = Integer.parseInt(st.nextToken());     // 포함되어야하는 숫자 입력
-        Arrays.sort(arr);							   // Lucky Set 데이터 정렬
-        int a = arr[0], b = arr[L-1], count = 0;      // Lucky Set 데이터 최솟값, 최댓값 저장
-
-        for(int i = 0 ; i < L ; i++) {				   // 포함되어야하는 숫자와 인접한 최솟값 최댓값 찾아 저장
-            if(arr[i] <= N && arr[i] > a)
+            if(arr[i] <= n && arr[i] > a)
                 a = arr[i];
-            if(arr[i] >= N && arr[i] < b)
-                b = arr[i];
-        }
-        if(N<a) {									   // 2가지 경우의 수 존재 N이 Lucky Set 데이터 최솟값 보다 앞에 있는 경우
-            if(N == 1 || N == a-1) {
-                count = a - 2;
-            }
-            else {
-                count = a - 2;
-                count = count + ((N-1)*(a-(N+1)));
+            if(arr[i] >= n && arr[i] < b)
+                b = arr[i];{
             }
         }
-        else if (N<b) {							   // N이 Lucky Set 데이터들 사이에 있는 경우
-            if(N == a+1 || N == b-1) {
-                count = b - a - 2;
+
+        int result = 0;
+        if(n < a){
+            if(n == 1 || n== a-1){
+                result = a - 2;
             }
-            else {
-                count = b - a - 2;
-                count = count + ((N-(a+1))*(b-(N+1)));
+            else{
+                result = a - 2;
+                result += (n-2) * ((n-1)*(a-(n+1)));
             }
         }
-        System.out.println(count);
+        else if(n < b){
+            if(n == a+1 || n == b-1){
+                result = b - a - 2;
+            }
+            else{
+                result = b - a - 2;
+                result += ((n - (a + 1)) * (b - (n + 1)));
+            }
+        }
+        System.out.println(result);
     }
+
 }
