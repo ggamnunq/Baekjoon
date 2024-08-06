@@ -3,10 +3,7 @@ package beakjoon.BJ_1138;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
 
@@ -17,7 +14,7 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
 
-        List<Integer> arr = new ArrayList<>();
+        List<Integer> arr = new LinkedList<>();
 
         st = new StringTokenizer(br.readLine());
         Stack<Integer> stack = new Stack<>();
