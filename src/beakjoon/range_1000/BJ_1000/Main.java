@@ -16,6 +16,6 @@ public class Main {
         int b = Integer.parseInt(st.nextToken());
 
         System.out.println(a+b);
-        //prac
+        //
     }
 }
