@@ -18,7 +18,6 @@ public class Main {
             c = a+b;
             a = b;
             b = c;
-
         }
         System.out.println(c);
 
