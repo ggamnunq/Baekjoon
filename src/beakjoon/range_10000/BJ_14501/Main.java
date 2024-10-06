@@ -1,4 +1,4 @@
-package beakjoon.range_1000.BJ_14501;
+package beakjoon.range_10000.BJ_14501;
 
 import java.io.BufferedReader;
 import java.io.IOException;

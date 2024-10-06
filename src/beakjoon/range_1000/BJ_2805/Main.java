@@ -30,7 +30,6 @@ public class Main {
             long sum = 0;
 
             for (Integer tree : trees) {
-
                 if (tree > mid) {
                     sum += tree - mid;
                 }
@@ -43,7 +42,6 @@ public class Main {
             }
 
         }
-
         System.out.println(min-1);
     }
 }

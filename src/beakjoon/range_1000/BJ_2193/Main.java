@@ -11,10 +11,9 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
         long a = 1, b = 0;
-        long c = a+b;
+        long c = a + b;
 
         for (int i = 0; i < N; i++) {
-
             c = a+b;
             a = b;
             b = c;
