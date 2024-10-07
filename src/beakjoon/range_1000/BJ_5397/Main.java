@@ -16,7 +16,7 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         int T = Integer.parseInt(st.nextToken());
 
-        while(T-->0){
+        while(T-- >0){
 
             StringBuilder sb= new StringBuilder();
 
