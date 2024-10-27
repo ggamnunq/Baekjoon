@@ -3,54 +3,55 @@ package beakjoon.range_1000.BJ_5397;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.StringTokenizer;
+import java.util.Stack;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
 
-        st = new StringTokenizer(br.readLine());
-        int T = Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(br.readLine());
 
-        while(T-- >0){
+        while (N-- > 0) {
 
-            StringBuilder sb= new StringBuilder();
+            Stack<Character> stack1 = new Stack<>();
+            Stack<Character> stack2 = new Stack<>();
 
-            st = new StringTokenizer(br.readLine());
-            String str = st.nextToken();
-            int L = str.length();
+            String input = br.readLine();
+            for (char c : input.toCharArray()) {
 
-            LinkedList<Character> linkedList = new LinkedList<>();
-            int curs = 0;
-            for (int i = 0; i < L; i++) {
-
-                char c = str.charAt(i);
-
-                if (('0' <= c && c <= '9') || ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')) {
-                    linkedList.add(curs, c);
-                    curs++;
-                }
-                else if (c == '<' && curs > 0) {
-                    curs--;
-
-                } else if (c == '>' && curs < linkedList.size()) {
-                    curs++;
-
-                } else if (c == '-' && curs > 0) {
-                    linkedList.remove(curs-1);
-                    curs--;
-
+                switch (c) {
+                    case '<':
+                        if (!stack1.isEmpty()) {
+                            stack2.push(stack1.pop());
+                        }
+                        break;
+                    case '>':
+                        if (!stack2.isEmpty()) {
+                            stack1.push(stack2.pop());
+                        }
+                        break;
+                    case '-':
+                        if (!stack1.isEmpty()) {
+                            stack1.pop();
+                        }
+                        break;
+                    default:
+                        stack1.push(c);
                 }
 
             }
-            for(Character ch : linkedList){
-                sb.append(ch);
+
+            while (!stack1.isEmpty()) {
+                stack2.push(stack1.pop());
             }
-            System.out.println(sb.toString());
+            while (!stack2.isEmpty()) {
+                sb.append(stack2.pop());
+            }
+            sb.append("\n");
         }
+        System.out.println(sb.toString());
+
     }
 }
